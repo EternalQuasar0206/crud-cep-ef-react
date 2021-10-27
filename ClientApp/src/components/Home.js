@@ -27,7 +27,13 @@ export function Home() {
     const data = await response.json();
 
     if(data.result == "[s]") {
-      setCepResponse(JSON.stringify(data.cep));
+      if(data.cep != null) {
+        setCepResponse(JSON.stringify(data.cep));
+      }
+      else {
+        setCepResponse("Verifique se os dados foram inseridos no banco e tente novamente.");
+      }
+      
     }
     else {
       alert(data.result);
