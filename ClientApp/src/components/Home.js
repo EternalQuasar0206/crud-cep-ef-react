@@ -19,13 +19,19 @@ export function Home() {
       body: cepObj
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => alert(data.result));
   }
 
   async function recuperaCEP(cep) {
     const response = await fetch(`/api/record?cep=${cep}`);
-    const data = await response.text();
-    setCepResponse(data);
+    const data = await response.json();
+
+    if(data.result == "[s]") {
+      setCepResponse(JSON.stringify(data.cep));
+    }
+    else {
+      alert(data.result);
+    }
   }
 
   return (
@@ -43,7 +49,7 @@ export function Home() {
         Consultar DB
       </button>
       <div id="result-block" style={{overflowWrap: "break-word"}}>
-        {cepResponse.replace("CepString", "cep")}
+        {cepResponse.replace("cepString", "cep").replace("CepString", "cep")}
       </div>
     </div>
   );

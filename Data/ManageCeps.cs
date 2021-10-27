@@ -11,25 +11,26 @@ namespace crud_cep.Data {
                 await Context.Ceps.AddAsync(cep);
                 await Context.SaveChangesAsync();
                 return new ActionResponse() { 
-                    result = "Success"
+                    result = "Valor gravado com sucesso"
                 };
             }
-            catch(Exception e) {
+            catch {
                 return new ActionResponse() { 
-                    result = e.ToString()
+                    result = "Verifique os se valores inseridos existem ou estão no formato correto"
                 };
             }
         }
 
-        public static async Task<Cep> RetrieveCep(string cep) {
+        public static async Task<ActionResponse> RetrieveCep(string cep) {
             return await Task.Run(() => {
-                Cep result = new();
+                ActionResponse result = new();
                 try {
                     db_selecao_imdbContext Context = new();
-                    result = Context.Ceps.Where(x => x.CepString == cep).FirstOrDefault();                
+                    result.result = "[s]";
+                    result.cep = Context.Ceps.Where(x => x.CepString == cep).FirstOrDefault();                
                 }
-                catch(Exception e) {
-                    throw new Exception(e + "");
+                catch {
+                    result.result = "Verifique se os dados realmente existem ou cheque sua conexão.";
                 }
                 return result;
             });

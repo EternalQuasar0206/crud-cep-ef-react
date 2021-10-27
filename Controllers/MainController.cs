@@ -21,7 +21,7 @@ namespace crud_cep.Controllers
 
         [Route("/api/record")]
         [HttpGet]
-        public Task<Cep> AddCep(string cep) {
+        public Task<ActionResponse> AddCep(string cep) {
             return ManageCeps.RetrieveCep(cep);
         }
     }
