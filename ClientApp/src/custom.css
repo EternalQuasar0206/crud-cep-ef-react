@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
 h4 {
   margin-top: 5%;
 }
@@ -8,4 +10,14 @@ input {
 
 button {
   margin-right: 1%;
+}
+
+#result-block {
+  margin-top: 2%;
+  padding: 3%;
+  width: 40%;
+  height: 20em;
+  background: #ddd;
+  border-radius: 1em;
+  font-family: 'Source Code Pro', monospace;
 }
