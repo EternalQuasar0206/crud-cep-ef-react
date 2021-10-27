@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System.Configuration;
+using crud_cep.Configuration;
 
 #nullable disable
 
@@ -23,8 +25,7 @@ namespace crud_cep.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql("Host=no-db-dev-101.negocieonline.com.br;Database=db_selecao_imdb;Username=test;Password=Sacapp@2020");
+                optionsBuilder.UseNpgsql(GetConfiguration.FromConfig().connectionString);
             }
         }
 
