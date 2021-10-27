@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -7,7 +8,8 @@ namespace crud_cep.Models
 {
     public partial class Cep
     {
-        public string Cep1 { get; set; }
+        [Key]
+        public string CepString { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
         public string Localidade { get; set; }

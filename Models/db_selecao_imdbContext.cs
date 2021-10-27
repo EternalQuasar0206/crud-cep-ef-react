@@ -35,15 +35,13 @@ namespace crud_cep.Models
 
             modelBuilder.Entity<Cep>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("ceps");
 
                 entity.Property(e => e.Bairro)
                     .HasColumnType("character varying")
                     .HasColumnName("bairro");
 
-                entity.Property(e => e.Cep1)
+                entity.Property(e => e.CepString)
                     .IsRequired()
                     .HasColumnType("character varying")
                     .HasColumnName("cep");
