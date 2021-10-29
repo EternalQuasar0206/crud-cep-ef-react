@@ -11,12 +11,12 @@ namespace crud_cep.Data {
                 await Context.Ceps.AddAsync(cep);
                 await Context.SaveChangesAsync();
                 return new ActionResponse() { 
-                    result = "Valor gravado com sucesso"
+                    result = "Valor gravado com sucesso."
                 };
             }
             catch {
                 return new ActionResponse() { 
-                    result = "Verifique os se valores inseridos existem ou estão no formato correto"
+                    result = "Verifique os se valores inseridos não já existem ou estão no formato correto."
                 };
             }
         }

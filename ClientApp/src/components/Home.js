@@ -5,9 +5,14 @@ export function Home() {
   var cepRef = React.createRef();
 
   async function buscaCEP(cep) {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    const data = await response.text();
-    setCepResponse(data.replace("cep", "CepString").replace("-", ""));
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const data = await response.text();
+      setCepResponse(data.replace("cep", "CepString").replace("-", ""));
+    }
+    catch {
+      alert("Verifique as informações inseridas ou a sua conexão e tente novamente.")
+    }
   }
 
   async function gravaCEP(cepObj) {
